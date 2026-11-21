@@ -1,0 +1,36 @@
+name: Wayback Machine
+
+on:
+  schedule:
+    # 11:00, 17:00 and 23:00 UTC = 08:00, 14:00 and 20:00 in Brasília (UTC-3)
+    - cron: '0 11,17,23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  archive:
+    name: Save smartdrugs.com.br
+    runs-on: ubuntu-latest
+    steps:
+      - name: Save pages on the Wayback Machine
+        run: |
+          failed=0
+          first=1
+          for url in https://smartdrugs.com.br/; do
+            if [ "$first" -eq 0 ]; then sleep 60; fi
+            first=0
+            echo "Saving $url"
+            code=$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 30 --max-time 180 \
+              -A "SmartDrugs-Wayback-Archive (+https://github.com/smartdrugs-br)" \
+              -D headers.txt "https://web.archive.org/save/${url}") || { echo "::error::Request failed for $url"; failed=1; continue; }
+            loc=$(grep -i '^content-location:' headers.txt | tr -d '\r' | awk '{print $2}')
+            if [ "$code" = "200" ] || [ "$code" = "302" ]; then
+              echo "::notice::Saved ${url} ${loc:+https://web.archive.org$loc}"
+            else
+              echo "::error::Save of $url returned HTTP $code"
+              failed=1
+            fi
+          done
+          exit $failed
