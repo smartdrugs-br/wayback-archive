@@ -7,13 +7,15 @@
 <p align="center">Automatic snapshots of <a href="https://smartdrugs.com.br">smartdrugs.com.br</a> on the Internet Archive Wayback Machine, three times a day.</p>
 
 <p align="center">
-  <a href="https://web.archive.org/web/*/smartdrugs.com.br*"><img src="https://img.shields.io/badge/Wayback%20Machine-smartdrugs.com.br-555?logo=internetarchive&logoColor=white" alt="Wayback Machine: smartdrugs.com.br"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue" alt="License: MIT"></a>
+  <a href="https://web.archive.org/web/*/smartdrugs.com.br*"><img src="https://img.shields.io/badge/Wayback%20Machine-smartdrugs.com.br-fe2e3a?labelColor=1c1c1c&logo=internetarchive&logoColor=white" alt="Wayback Machine: smartdrugs.com.br"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-1c1c1c?labelColor=fe2e3a&color=1c1c1c" alt="License: MIT"></a>
 </p>
 
 This repository keeps a public, timestamped history of the SmartDrugs website. A GitHub Actions workflow asks the Wayback Machine to capture the site three times a day, so every change stays on record.
 
-SmartDrugs is a Brazilian evidence hub about nootropics, with a source for every number. It sells nothing and does not tell anyone what to take.
+SmartDrugs: Nootrópicos, smartdrugs e stacks pelo que as evidências e relatos dizem. 100% independente. Sem hype, sem venda direta.
+
+Contact: [contato@smartdrugs.com.br](mailto:contato@smartdrugs.com.br)
 
 ## Schedule
 
@@ -35,6 +37,7 @@ The workflow can also be started by hand from the Actions tab with **Run workflo
 
 - Website: [smartdrugs.com.br](https://smartdrugs.com.br)
 - History: [Wayback Machine](https://web.archive.org/web/*/smartdrugs.com.br*)
+- Contact: [contato@smartdrugs.com.br](mailto:contato@smartdrugs.com.br)
 
 ## License
 
